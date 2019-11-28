@@ -1,7 +1,0 @@
-<!--logs.wxml-->
-<view>
-  <view class="row">我的地址</view>
-  <view class="row">类型</view>
-  <view class="row">说明</view>
-  <view class="row">联系方式</view>
-</view>
