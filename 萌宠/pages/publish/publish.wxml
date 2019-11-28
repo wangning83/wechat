@@ -1,16 +1,16 @@
 <!--logs.wxml-->
-<view>
+<view wx:if="{{!success}}">
   <view class="row">
     <label class="title">我的地址</label>
-    <view class="info">点击选择，要勾选哦</view>
+    <view class="info" bindtap="handleAddressClick">{{address}}</view>
   </view>
   <view class="row">
     <label class="title">类型</label>
     <view class="info">
-      <radio-group>
+      <radio-group bindchange="handleTypeChange">
         <label>
-          <radio value="1" checked="true"/>求购
-          <radio value="2" checked="false"/>转让
+          <radio value="buy" checked="true" />求购
+          <radio value="sell"  />转让
         </label>
       </radio-group>
     </view>
@@ -18,15 +18,24 @@
   <view class="row">
     <label class="title">说明</label>
     <view class="info">
-     <input class="info-input" placeholder="填写您的具体需求" />
+      <input class="info-input" placeholder="填写您的具体需求" bindinput="handleMessageChange"/>
     </view>
   </view>
   <view class="row">
     <label class="title">联系方式</label>
     <view class="info">
-     <input class="info-input" placeholder="请填写您的联系方式" />
-    </view> 
+      <input class="info-input" placeholder="请填写您的联系方式" bindinput="handleContactChange"/>
+    </view>
   </view>
 
-  <view class="submit-button">发布信息</view>
+<!--提交staticData数据给后台-->
+  <view class="submit-button" bindtap="handleSubmit">发布信息</view>
+</view>
+
+<!--数据提交成功后显示另一个页面-->
+<view wx:if="{{success}}" class="success">
+  <view class="congratulation">
+    <icon class="success-icon" type="success" size="24" />
+    恭喜您，提交成功</view>
+  <button type="default" size="{{primarySize}}" class="backhome-button" bindtap="handleBackTap">返回首页</button>
 </view>
